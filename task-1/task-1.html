@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_1</title>
+</head>
+<body>
+
+<style>
+    .red {
+        color: red;
+    }
+</style>
+
+<input type="text" name="name" id="name_input" value="Xxxx">
+
+<script>
+
+    document.getElementById("name_input").addEventListener("change", function () {
+            if (this.value !== "Xxxx") {
+                this.classList.add("red");
+            } else {
+                this.classList.remove("red");
+            }
+        }
+    )
+
+</script>
+
+</body>
+</html>
