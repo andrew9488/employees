@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_2</title>
+</head>
+<body>
+
+<form>
+    <h3>Size:</h3>
+    <label><input type="radio" name="size" id="size_S" value="S">S</label>
+    <label><input type="radio" name="size" id="size_M" value="M">M</label>
+    <label><input type="radio" name="size" id="size_L" value="L">L</label>
+
+    <h3>Color:</h3>
+    <label><input type="checkbox" name="color" id="color_1" value="1">1</label>
+    <label><input type="checkbox" name="color" id="color_2" value="2">2</label>
+    <label><input type="checkbox" name="color" id="color_3" value="3">3</label>
+    <label><input type="checkbox" name="color" id="color_4" value="4">4</label>
+    <label><input type="checkbox" name="color" id="color_5" value="5">5</label>
+
+    <h3>Manufacturer: </h3>
+    <select multiple name="manufacturer" id="manufacturer">
+        <option value="aaa">aaa</option>
+        <option value="b&c">b&c</option>
+        <option value="ddd">ddd</option>
+        <option value="eee">eee</option>
+    </select>
+
+    <h3>Sale:</h3>
+    <label><input type="checkbox" name="sale" id="sale_1" value="1">1</label>
+</form>
+
+<script>
+
+    const search = new URLSearchParams("size=M&color=1&color=2&manufacturer=aaa&manufacturer=ddd");
+
+    for (const [key, value] of search) {
+        const element = document.querySelector("form").elements[key];
+        if (!element) continue;
+        switch (element.constructor) {
+            case RadioNodeList:
+                for (const node of element) {
+                    if (node.value === value)
+                        node.checked = true;
+                }
+                break;
+            case HTMLSelectElement:
+                for (const option of element) {
+                    if (option.value === value)
+                        option.selected = true;
+                }
+                break;
+            case HTMLInputElement:
+                element.value = value;
+                if (element.type === "checkbox")
+                    element.checked = true;
+                break;
+        }
+    }
+    addEventListener("input", ({target}) => {
+        if (!target.matches("form [name]")) return;
+        const url = `${new URLSearchParams(new FormData(target.form))}`;
+        console.log(`http://sale_shop/filter${url}`);
+    });
+
+</script>
+
+</body>
+</html>
