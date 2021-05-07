@@ -1,6 +1,6 @@
 # Task 02
 
-[Посмотреть реализацию](вставить ссылку)
+[Посмотреть реализацию](https://ktrt5.csb.app/)
 
 Допустим, что по url http://любой\_домен/filter?size=M&color=1&color=2&manufacturer=aaa&manufacturer=ddd
 находится страница, на которой есть такие поля:
