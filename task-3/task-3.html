@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_3</title>
+</head>
+<body>
+
+<script>
+
+    function request(url) {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        resolve(xhr.response);
+                    } else {
+                        reject(xhr.status);
+                    }
+                }
+            };
+            xhr.open('get', url, true);
+            xhr.send();
+        });
+    }
+
+    const promise1 = request(`http://google.com`);
+    const promise2 = request(`http://google.com`);
+
+    Promise.all([promise1,promise2])
+        .then(response=>{
+            console.log(`Оба ответа получены: ${response[0]} ${response[1]}`);
+        });
+
+</script>
+
+</body>
+</html>
