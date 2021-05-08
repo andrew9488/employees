@@ -1,5 +1,6 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
+import {HomePage} from "../HomePage/HomePage";
 
 
 export const PATH = {
@@ -11,8 +12,9 @@ const Routes: React.FC = () => {
     return (
         <div>
             <Switch>
-                <Route path={PATH.HOME_PAGE} render={() => {}}/>
-                <Route path={PATH.EMPLOYEES} render={() => {}}/>
+                <Route path={PATH.HOME_PAGE} render={() => <HomePage/>}/>
+                <Route path={PATH.EMPLOYEES} render={() => {
+                }}/>
             </Switch>
         </div>
     );
