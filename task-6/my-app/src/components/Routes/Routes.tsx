@@ -6,7 +6,7 @@ import {Employees} from "../Employees/Employees";
 
 export const PATH = {
     HOME_PAGE: "/home_page",
-    EMPLOYEES: "employees"
+    EMPLOYEES: "/employees"
 }
 
 const Routes: React.FC = () => {
