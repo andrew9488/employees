@@ -6,10 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import {HashRouter} from "react-router-dom";
 import {store} from './bll/store';
 import {Provider} from 'react-redux';
+import {PATH} from "./components/Routes/Routes";
 
 ReactDOM.render(
     <React.StrictMode>
-        <HashRouter>
+        <HashRouter basename={PATH.HOME_PAGE}>
             <Provider store={store}>
                 <App/>
             </Provider>

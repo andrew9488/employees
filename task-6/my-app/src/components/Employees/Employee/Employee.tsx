@@ -1,5 +1,8 @@
+import {IconButton} from "@material-ui/core";
 import React from "react";
 import {EmployeeType} from "../../../bll/employees-reducer";
+import {Delete} from "@material-ui/icons";
+import s from "./Employee.module.css";
 
 type EmployeePropsType = {
     employee: EmployeeType
@@ -15,9 +18,13 @@ export const Employee: React.FC<EmployeePropsType> = (props) => {
     }
 
     return (
-        <ul>
-            <li>{props.employee.first_name} {props.employee.last_name}</li>
-            <button onClick={() => removeEmployee(props.employee.id)}>x</button>
-        </ul>
+        <div className={s.employeeContainer}>
+            <div className={s.employeeBlock}>
+                <span>{props.employee.first_name}</span>
+                <IconButton aria-label="delete" onClick={() => removeEmployee(props.employee.id)}>
+                    <Delete/>
+                </IconButton>
+            </div>
+        </div>
     )
 }

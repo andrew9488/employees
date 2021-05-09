@@ -48,8 +48,8 @@ export const employeesReducer = (state: EmployeesType = initialState, action: Ac
         case "EMPLOYEES-REDUCER/ADD-EMPLOYEE":
             let newEmployee: EmployeeType = {
                 id: new Date().getTime(),
-                first_name: action.firstName,
-                last_name: action.lastName,
+                first_name: action.name,
+                last_name: "NewEmployee",
                 avatar: "avatar",
                 email: "newEmployee@gmail.com"
             }
@@ -68,8 +68,8 @@ const getEmployeesAC = (employees: Array<EmployeeType>) =>
 export const removeEmployeeAC = (id: number) =>
     ({type: "EMPLOYEES-REDUCER/REMOVE-EMPLOYEE", id} as const)
 
-export const addEmployeeAC = (firstName: string, lastName: string) =>
-    ({type: "EMPLOYEES-REDUCER/ADD-EMPLOYEE", firstName, lastName} as const)
+export const addEmployeeAC = (name: string) =>
+    ({type: "EMPLOYEES-REDUCER/ADD-EMPLOYEE", name} as const)
 
 export const getEmployeesTC = (): ThunkType => {
     return (dispatch: ThunkDispatch<AppRootStateType, unknown, ActionsType>) => {

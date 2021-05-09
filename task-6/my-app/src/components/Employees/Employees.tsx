@@ -3,7 +3,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {EmployeeType, getEmployeesTC, removeEmployeeAC} from "../../bll/employees-reducer";
 import {AppRootStateType} from "../../bll/store";
 import {Employee} from "./Employee/Employee";
-import {AddItemsForm} from "../AddItemsForm/AddItemsForm";
+import {AddItemForm} from "../AddItemForm/AddItemForm";
+import {Paper} from "@material-ui/core";
+import s from "./Employees.module.css"
 
 
 export const Employees: React.FC = () => {
@@ -22,8 +24,11 @@ export const Employees: React.FC = () => {
     }
 
     return (
-        <div>
-            <AddItemsForm/>
+        <div className={s.employeesContainer}>
+            <Paper className={s.paper} elevation={3}>
+                <AddItemForm/>
+            </Paper>
+            <h3>EMPLOYEES</h3>
             {
                 employees && employees.map(e => {
                     return (
